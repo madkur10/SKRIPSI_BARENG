@@ -58,7 +58,7 @@ require_once "lib/olah_table.php";
                                         FORMULIR PENDAFTARAN KONSULTASI ONLINE
                                     </div>
                                     <div class="card-body">
-                                        <form method="POST" action="action/register-new-account.php">
+                                        <form method="POST" action="action/daftar-telemedicine.php">
                                             <div class="form-floating mb-3 mb-md-0">
                                                 <input class="form-control" id="tglKonsultasi" type="date" name="tglKonsultasi" required="true" />
                                                 <label for="tglKonsultasi">Pilih Tanggal Konsultasi</label>
@@ -79,13 +79,14 @@ require_once "lib/olah_table.php";
                                             </div>
                                             <div class="mb-3">
                                                 <label for="dokterTujuan">Pilih Slot Jam Konsultasi</label>
-                                                <div class="row" style="padding-left: 12px;">
-                                                    <span class="col-md-3 col-xs-12" style="background-color:#9adb5c; border-radius:8px; margin-bottom: 5px;"><input type="radio" /> 08:00 - 09:00</span> &nbsp;
-                                                    <span class="col-md-3 col-xs-12" style="background-color:#9adb5c; border-radius:8px; margin-bottom: 5px;"><input type="radio" /> ads</span> &nbsp;
-                                                    <span class="col-md-3 col-xs-12" style="background-color:#9adb5c; border-radius:8px; margin-bottom: 5px;"><input type="radio" /> ads</span>&nbsp;
-                                                    <span class="col-md-3 col-xs-12" style="background-color:#9adb5c; border-radius:8px; margin-bottom: 5px;"><input type="radio" /> ads</span>&nbsp;
+                                                <div class="row" style="padding-left: 12px;" id="divSlotDokter">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        Slot Jam Konsultasi Online Akan Muncul Setelah Memilih Tanggal, Klinik Dan Dokter.
+                                                    </div>
                                                 </div>
                                             </div>
+
+                                            <span class="btn btn-primary col-12 submit">DAFTAR</span>
                                         </form>
                                     </div>
                                 </div>
@@ -131,6 +132,52 @@ require_once "lib/olah_table.php";
                                         }
                                     });
                                 });
+
+                                $(`select[name=dokterTujuan]`).on('change', function(){
+                                    $.ajax({
+                                        url: `action/ajaxData/getDataJadwalDokter.php?tgl=${$(`input[name=tglKonsultasi]`).val()}&klinik=${$(`select[name=klinikTujuan]`).val()}&dokter_id=${$(`select[name=dokterTujuan]`).val()}`,
+                                        type: `GET`,
+                                        dataType: 'json',
+                                        success: function (result) {
+                                             if(result.metadata.code == 200){
+                                                $(`#divSlotDokter`).html(``);
+                                                $.each(result.response, function(i, item) {
+
+                                                    if(item.status_selesai == 1){
+                                                        $(`#divSlotDokter`).append(`
+                                                            <span class="col-md-3 col-xs-12" style="background-color:#ffec45; border-radius:8px; margin-bottom: 5px;">
+                                                                <input type="radio" disabled="true"/> ${item.jam_mulai} - ${item.jam_selesai}
+                                                            </span> &nbsp;
+                                                        `);
+                                                    }
+
+                                                    if(item.status_selesai == 2){
+                                                        $(`#divSlotDokter`).append(`
+                                                            <span class="col-md-3 col-xs-12" style="background-color:#ff1c1c; border-radius:8px; margin-bottom: 5px;">
+                                                                <input type="radio" disabled="true"/> ${item.jam_mulai} - ${item.jam_selesai}
+                                                            </span> &nbsp;
+                                                        `);
+                                                    }
+
+                                                    if(item.status_selesai != 1 && item.status_selesai != 2){
+                                                        $(`#divSlotDokter`).append(`
+                                                            <span class="col-md-3 col-xs-12" style="background-color:#9adb5c; border-radius:8px; margin-bottom: 5px;" onclick="checkThisRadio(this)">
+                                                                <input type="radio" name="jadwalDokter" value="${item.id}" /> ${item.jam_mulai} - ${item.jam_selesai}
+                                                            </span> &nbsp;
+                                                        `);
+                                                    }
+                                                });     
+                                             }
+                                        },
+                                        error: function (error, text, code) {
+                                            
+                                        }
+                                    });
+                                });
+
+                                function checkThisRadio(e){
+                                    $(e).find(`input[type=radio]`).prop("checked", true);
+                                }
                             </script>
 
                             <div class="col-xl-6">
@@ -158,6 +205,7 @@ require_once "lib/olah_table.php";
                 </footer>
             </div>
         </div>
+        <script src="js/all-main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

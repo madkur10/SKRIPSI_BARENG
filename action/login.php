@@ -13,7 +13,14 @@ if(empty($_SESSION)){
 
 		$conn->beginTransaction();
 
-		$queryUsersPasien		= "SELECT * FROM users left outer join pasien on users.id = pasien.users_id where lower(users.username) = :username and users.password = :password";
+		$queryUsersPasien		= " SELECT 
+										users.id as user_id, 
+										users.fullname, 
+										users.username, 
+										users.password, 
+										pasien.id as pasien_id,
+										pasien.nama_pasien 
+									FROM users left outer join pasien on users.id = pasien.users_id where lower(users.username) = :username and users.password = :password";
 		$resUsersPasien			= $conn->prepare($queryUsersPasien);
 		$resUsersPasien->bindValue(':username', $username);
 		$resUsersPasien->bindValue(':password', $password);
