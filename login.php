@@ -1,67 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Login - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    </head>
-    <body class="bg-primary">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Halaman Login</h3></div>
-                                    <div class="card-body">
-                                        <form method="post" action="action/login.php">
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="username" name="username" type="text" placeholder="Username" />
-                                                <label for="username">Username</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
-                                                <label for="password">Password</label>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <span class="btn btn-primary col-12 submit">Login</span>
-                                            </div>
-                                        </form>
+<?php
+    include "template/header.php";
+?>
+        <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+            <div class="card card0 border-0">
+                <div class="row d-flex">
+                    <div class="row col-12"> <img src="img/header.png"> </div>
+                    <div class="col-lg-6">
+                        <div class="card1 pb-5">
+                            <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                     </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.php">Belum Memiliki Akun? Daftar!</a></div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="img/carousel_1.jpg" class="d-block w-100 carouselsize" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="img/carousel_2.jpg" class="d-block w-100 carouselsize" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="img/carousel_3.jpg" class="d-block w-100 carouselsize" alt="...">
+                                        </div>
                                     </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                    <div class="col-lg-6">
+                        <div class="card2 card border-0 px-4 py-5">
+                            <div class="row mb-2 px-3">
+                                <h5>Login Telemedicine - Rs Pelni</h5>
                             </div>
+                            <div class="row px-3 mb-4">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                            <form method="post" action="action/login.php">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="username" name="username" type="text" placeholder="Username" />
+                                    <label for="username">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                    <span class="btn btn-primary col-12 submit">Login</span>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </footer>
+                </div>
+                <div id="layoutAuthentication_footer">
+                    <footer class="py-1 bg-light mt-auto">
+                        <div class="container-fluid">
+                            <div class="d-flex align-items-center justify-content-between small">
+                                <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
             </div>
         </div>
-        <script src="js/all-main.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
+<?php include "template/footer.php"; ?>
