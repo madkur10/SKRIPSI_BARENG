@@ -17,10 +17,18 @@ if(empty($_SESSION)){
 										users.id as user_id, 
 										users.fullname, 
 										users.username, 
-										users.password, 
+										users.password,
+										users.hak_akses_id,
 										pasien.id as pasien_id,
-										pasien.nama_pasien 
-									FROM users left outer join pasien on users.id = pasien.users_id where lower(users.username) = :username and users.password = :password";
+										pasien.nama_pasien,
+										dokter.id as dokter_id 
+									FROM 
+										users left outer join 
+										pasien on users.id = pasien.users_id left outer join
+										dokter on users.id = dokter.user_id
+									where 
+										lower(users.username) = :username and 
+										users.password = :password";
 		$resUsersPasien			= $conn->prepare($queryUsersPasien);
 		$resUsersPasien->bindValue(':username', $username);
 		$resUsersPasien->bindValue(':password', $password);
@@ -28,9 +36,17 @@ if(empty($_SESSION)){
 		$resultUsersPasien		= $resUsersPasien->fetch();
 		
 		if($conn->commit()) { 
-			if(!empty($resultUsersPasien['id'])){
-				$_SESSION['users_id'] = $resultUsersPasien['id'];
+			if(!empty($resultUsersPasien['user_id'])){
+				$_SESSION['users_id'] = $resultUsersPasien['user_id'];
 				$_SESSION['fullname'] = $resultUsersPasien['fullname'];
+
+				if($resultUsersPasien['hak_akses_id'] == 2){
+					$_SESSION['pasien_id'] = $resultUsersPasien['pasien_id'];	
+				}
+
+				if($resultUsersPasien['hak_akses_id'] == 4){
+					$_SESSION['dotker_id'] = $resultUsersPasien['dokter_id'];	
+				}
 			}
 
 			if(empty($_SESSION['users_id'])){
