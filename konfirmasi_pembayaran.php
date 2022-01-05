@@ -51,25 +51,47 @@ require_once "lib/olah_table.php";
                             <li class="breadcrumb-item active">Mohon Pilih Klinik Yang Ingin Anda Tuju.</li>
                         </ol>
                         <div class="row">
-                            <div class="col-xl-6">
+                            <div class="col-xl-12">
                                 <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        FORMULIR PENDAFTARAN KONSULTASI ONLINE
-                                    </div>
                                     <div class="card-body">
-                                        bayar lah
-                                    </div>
-                                </div>
-                            </div>
+                                        <?php
+                                        $queryKlinikJadwal      = "
+                                                                    SELECT 
+                                                                        klinik.id, 
+                                                                        klinik.nama_klinik,
+                                                                        dokter.nama_dokter,
+                                                                        jadwal_dokter.jam_mulai,
+                                                                        registrasi.tgl_order,
+                                                                        registrasi.created_at
+                                                                    FROM 
+                                                                        registrasi inner join 
+                                                                        jadwal_dokter on registrasi.jadwal_dokter_id = jadwal_dokter.id inner join
+                                                                        klinik on klinik.id = registrasi.klinik_id inner join
+                                                                        dokter on dokter.id = registrasi.dokter_id
+                                                                    WHERE 
+                                                                        registrasi.id = :registrasi_id";
+                                        $resKlinikJadwal            = $conn->prepare($queryKlinikJadwal);
+                                        $resKlinikJadwal->bindValue(':registrasi_id', $_GET['registrasi_id']);
+                                        $resKlinikJadwal->execute();
+                                        $resultKlinikJadwal     = $resKlinikJadwal->fetch();
 
-                         
-
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    
-                                    <div class="card-body">
-                                        bisa diisi iklan untuk mempercantik
+                                        if(!empty($resultKlinikJadwal)){
+                                            ?>
+                                            <center>
+                                                Pendaftaran Anda Ke <br>
+                                                <?=$resultKlinikJadwal['nama_klinik']?> - <?=$resultKlinikJadwal['nama_dokter']?><br>
+                                                Dengan Rencana Konsultasi Online Pada <br>
+                                                <?=date('d-m-Y',strtotime($resultKlinikJadwal['tgl_order']))?> Pukul : <?=$resultKlinikJadwal['jam_mulai']?><br>
+                                            
+                                                <br><br><br>
+                                                Mohon Selesaikan Pembayaran Anda Sebelum <br>
+                                                <h4><?=date('d-m-Y H:i:s',strtotime($resultKlinikJadwal['created_at'] . "+2hours"))?></h4>
+                                                <br><br><br>
+                                                <span class="btn btn-primary col-md-3 col-xs-12">KONFIRMASI PEMBAYARAN</span>
+                                            </center>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
