@@ -99,42 +99,7 @@
                 </footer>
             </div>
         </div>
-        <script>
-            $( document ).ready(function() {
-                $(".submit").on('click', function(){
-                    $.ajax({
-                        url: $(this).closest('form').attr(`action`),
-                        type: $(this).closest('form').attr(`method`),
-                        dataType: 'json',
-                        data: $(this).closest('form').serialize(),
-                        success: function (result) {
-                            if(result.metadata.code == 200){
-                                swal({
-                                    title: result.metadata.code,
-                                    text: `${result.metadata.code} - Mohon Lakukan Login.`,
-                                    type: "success",
-                                    icon: "success",
-                                    button: {
-                                        text: "Login",
-                                    },
-                                }).then(function() {
-                                    window.location = "login.php";
-                                });
-                            }else{
-                                notification(result.metadata.code,result.metadata.message, 'error');
-                            }
-                        },
-                        error: function (error, text, code) {
-                            notification(error.status,error.statusText, 'error');
-                        }
-                    });
-                });
-            });
-
-            function notification (tittle, text, type){
-                swal(`Error Code : ${tittle}`, text, type);
-            }
-        </script>
+        <script src="js/all-main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
     </body>

@@ -10,26 +10,26 @@ if(empty($_SESSION)){
     try {
 		$conn->beginTransaction();
 
-		$namaLengkap							= trim($_POST["namaLengkap"]);
-		$jenisKelamin							= trim($_POST["jenisKelamin"]);
-		$tempatLahir							= trim($_POST["tempatLahir"]);
-		$tglLahir								= date('Y-m-d H:i:s',strtotime(trim($_POST["tglLahir"])));
-		$userEmail								= trim($_POST["userEmail"]);
-		$nomorIdentitas							= trim($_POST["nomorIdentitas"]);
-		$nomorHandphone							= trim($_POST["nomorHandphone"]);
-		$username								= trim($_POST["nomorIdentitas"]);
-		$password								= trim($_POST["password"]);
-		$alamat									= trim($_POST["alamatPasien"]);
+		$namaLengkap									= trim($_POST["namaLengkap"]);
+		$jenisKelamin									= trim($_POST["jenisKelamin"]);
+		$tempatLahir									= trim($_POST["tempatLahir"]);
+		$tglLahir										= date('Y-m-d H:i:s',strtotime(trim($_POST["tglLahir"])));
+		$userEmail										= trim($_POST["userEmail"]);
+		$nomorIdentitas									= trim($_POST["nomorIdentitas"]);
+		$nomorHandphone									= trim($_POST["nomorHandphone"]);
+		$username										= trim($_POST["nomorIdentitas"]);
+		$password										= trim($_POST["password"]);
+		$alamat											= trim($_POST["alamatPasien"]);
 
-		$isi_table_users["id"] 						= generate_max("users","id");
-		$isi_table_users["created_by"] 				= $isi_table_users["id"];
-		$isi_table_users["created_at"] 				= $input_time;
-		$isi_table_users["fullname"] 				= $namaLengkap;
+		$isi_table_users["id"] 							= generate_max("users","id");
+		$isi_table_users["created_by"] 					= $isi_table_users["id"];
+		$isi_table_users["created_at"] 					= $input_time;
+		$isi_table_users["fullname"] 					= $namaLengkap;
 
-		$isi_table_users["username"] 				= $nomorIdentitas;
-		$isi_table_users["password"] 				= $password;
-		$isi_table_users["hak_akses_id"] 			= 2;
-		$isi_table_users["last_update_pass"] 		= $input_time;
+		$isi_table_users["username"] 					= $nomorIdentitas;
+		$isi_table_users["password"] 					= $password;
+		$isi_table_users["hak_akses_id"] 				= 2;
+		$isi_table_users["last_update_pass"] 			= $input_time;
 		insert_tabel("users", $isi_table_users);
 
 		$isi_table_pasien["id"] 						= generate_max("pasien","id");
