@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="userEmail" type="email" name="userEmail" required="true" />
-                                                <label for="userEmail">Email address</label>
+                                                <label for="userEmail">Email address <span style="color: red"> *</span></label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="nomorHandphone" type="text" name="nomorHandphone" required="true" />
