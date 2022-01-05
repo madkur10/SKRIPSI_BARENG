@@ -25,11 +25,11 @@
                                         <form method="POST" action="action/register-new-account.php">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="namaLengkap" name="namaLengkap" required="true" />
-                                                <label for="namaLengkap">Nama Lengkap</label>
+                                                <label for="namaLengkap">Nama Lengkap <span style="color: red"> *</span></label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="nomorIdentitas" name="nomorIdentitas" />
-                                                <label for="nomorIdentitas">NIK / KIA</label>
+                                                <label for="nomorIdentitas">NIK / KIA <span style="color: red"> *</span></label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <select class="form-select" name="jenisKelamin" id="jenisKelamin" required="true">
@@ -37,20 +37,20 @@
                                                     <option value="Laki-laki">Laki-laki</option>
                                                     <option value="Perempuan">Perempuan</option>
                                                 </select>
-                                                <label for="jenisKelamin">Jenis Kelamin</label>
+                                                <label for="jenisKelamin">Jenis Kelamin <span style="color: red"> *</span></label>
                                             </div>
 
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="tempatLahir" type="text" name="tempatLahir" required="true" />
-                                                        <label for="tempatLahir">Tempat Lahir</label>
+                                                        <label for="tempatLahir">Tempat Lahir <span style="color: red"> *</span></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="tglLahir" type="date" name="tglLahir" required="true" />
-                                                        <label for="tglLahir">Tanggal Lahir</label>
+                                                        <label for="tglLahir">Tanggal Lahir <span style="color: red"> *</span></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,15 +60,15 @@
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="nomorHandphone" type="text" name="nomorHandphone" required="true" />
-                                                <label for="nomorHandphone">Nomor Handphone</label>
+                                                <label for="nomorHandphone">Nomor Handphone <span style="color: red"> *</span></label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <textarea class="form-control" required="true" name="alamatPasien"></textarea>
-                                                <label for="alamatPasien">Alamat Sesuai Domisili</label>
+                                                <label for="alamatPasien">Alamat Sesuai Domisili <span style="color: red"> *</span></label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="password" type="text" name="password" required="true" />
-                                                <label for="password">password</label>
+                                                <label for="password">password <span style="color: red"> *</span></label>
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><span class="btn btn-primary btn-block submit">DAFTAR</button></div>
