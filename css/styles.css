@@ -11699,3 +11699,28 @@ body {
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
 }
+
+a.logo-utama {
+  font-size: 30px;
+  color: wheat;
+  float: left;
+  margin-top: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+a.logo-utama b {
+  font-weight: 900;
+}
+
+a.logo-utama:hover,
+a.logo-utama:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+a.logo-utama span {
+  color: #4ecdc4;
+}

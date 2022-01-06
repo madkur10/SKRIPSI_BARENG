@@ -10,37 +10,13 @@ require_once "lib/olah_table.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <?php require_once "lib/meta-head.php"; ?>
+    <?php require_once "template/header.php"; ?>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="action/logout.php">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+        <?php require_once "lib/navtop.php"; ?>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <?php require_once "lib/nav.php"; ?>
+                    <?php require_once "lib/navside.php"; ?>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -184,7 +160,34 @@ require_once "lib/olah_table.php";
                                 <div class="card mb-4">
                                     
                                     <div class="card-body">
-                                        bisa diisi iklan untuk mempercantik
+                                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                                <div class="carousel-indicators">
+                                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                                </div>
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <img src="assets/img/carousel_1.jpg" class="d-block w-100 carouselsize" alt="...">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img src="assets/img/carousel_2.jpg" class="d-block w-100 carouselsize" alt="...">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img src="assets/img/carousel_3.jpg" class="d-block w-100 carouselsize" alt="...">
+                                                    </div>
+                                                </div>
+                                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -205,10 +208,4 @@ require_once "lib/olah_table.php";
                 </footer>
             </div>
         </div>
-        <script src="js/all-main.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-    </body>
-</html>
+<?php require_once "template/footer.php"; ?>

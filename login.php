@@ -1,10 +1,9 @@
-<?php
-    include "template/header.php";
-?>
+<?php include "template/header.php"; ?>
+    <body>
         <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
             <div class="card card0 border-0">
                 <div class="row d-flex">
-                    <div class="row col-12"> <img src="img/header.png"> </div>
+                    <div class="row col-12"> <img src="assets/img/header.png"> </div>
                     <div class="col-lg-6">
                         <div class="card1 pb-5">
                             <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
@@ -16,13 +15,13 @@
                                     </div>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="img/carousel_1.jpg" class="d-block w-100 carouselsize" alt="...">
+                                            <img src="assets/img/carousel_1.jpg" class="d-block w-100 carouselsize" alt="...">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="img/carousel_2.jpg" class="d-block w-100 carouselsize" alt="...">
+                                            <img src="assets/img/carousel_2.jpg" class="d-block w-100 carouselsize" alt="...">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="img/carousel_3.jpg" class="d-block w-100 carouselsize" alt="...">
+                                            <img src="assets/img/carousel_3.jpg" class="d-block w-100 carouselsize" alt="...">
                                         </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -59,6 +58,9 @@
                                     <span class="btn btn-primary col-12 submit">Login</span>
                                 </div>
                             </form>
+                            <div class="card-footer text-center py-3">
+                                <div class="small"><a href="register.php">Belum Memiliki Akun? Daftar!</a></div>
+                            </div>
                         </div>
                     </div>
                 </div>

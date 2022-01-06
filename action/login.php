@@ -38,7 +38,11 @@ if(empty($_SESSION)){
 		if($conn->commit()) { 
 			if(!empty($resultUsersPasien['user_id'])){
 				$_SESSION['users_id'] = $resultUsersPasien['user_id'];
-				$_SESSION['fullname'] = $resultUsersPasien['fullname'];
+				if ($resultUsersPasien['hak_akses_id'] == 2) {
+					$_SESSION['fullname'] = $resultUsersPasien['nama_pasien'];
+				}else{
+					$_SESSION['fullname'] = $resultUsersPasien['fullname'];
+				}
 
 				if($resultUsersPasien['hak_akses_id'] == 2){
 					$_SESSION['pasien_id'] = $resultUsersPasien['pasien_id'];	

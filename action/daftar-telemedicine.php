@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-echo "";
-
 require_once "../lib/koneksi.php";
 require_once "../lib/olah_table.php";
 
