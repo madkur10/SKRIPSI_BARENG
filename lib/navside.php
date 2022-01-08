@@ -28,7 +28,7 @@
             <div class="collapse" id="registrasi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="pasien_daftar_pilih_poli.php">Konsultasi Online</a>
-                    <a class="nav-link" href="layout-sidenav-light.html">Riwayat Konsultasi</a>
+                    <a class="nav-link" href="list_order_pasien.php">Riwayat Konsultasi</a>
                 </nav>
             </div>
 
@@ -41,6 +41,18 @@
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="layout-static.html">Layanan Aktif</a>
                     <a class="nav-link" href="layout-sidenav-light.html">Riwayat Pembayaran</a>
+                </nav>
+            </div>
+
+            <div class="sb-sidenav-menu-heading">Role Kasir</div>
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#kasir" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Pembayaran Pasien
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="kasir" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="kasir_konfirmasi_pembayaran.php">List Pembayaran Pasien</a>
                 </nav>
             </div>
         </div>
