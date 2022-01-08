@@ -7,8 +7,8 @@ $(".submit").on('click', function(){
         success: function (result) {
             if(result.metadata.code == 200){
                 swal({
-                    title: result.metadata.code,
-                    text: `${result.metadata.code} - Mohon Lakukan Login.`,
+                    title: `${result.metadata.message}`,
+                    text: `${result.metadata.keterangan}`,
                     type: "success",
                     icon: "success",
                     button: {

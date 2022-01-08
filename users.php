@@ -77,7 +77,7 @@ $resultHakAkses		= $resHakAkses->fetchAll();
                                             <td><center><span class="badge bg-primary"><?php echo $value['nama_hak_akses'];?></span></center></td>
                                             <td style="width: 20%;"><?php echo $value['last_update_pass'];?></td>
                                             <td>
-                                                <button class="badge bg-primary" data-bs-toggle="modal" data-bs-target="#updatemodal<?=$value['user_id']?>"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#updatemodal<?=$value['user_id']?>"><i class="fas fa-edit"></i></button>
                                                 <div class="modal fade" id="updatemodal<?=$value['user_id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
@@ -127,7 +127,7 @@ $resultHakAkses		= $resHakAkses->fetchAll();
                                                     </div>
                                                 </div>
 
-                                                <button class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#hapusmodal<?=$value['user_id']?>"><i class="fas fa-trash"></i></button>
+                                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#hapusmodal<?=$value['user_id']?>"><i class="fas fa-trash"></i></button>
                                                 <div class="modal" id="hapusmodal<?=$value['user_id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">

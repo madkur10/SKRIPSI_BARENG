@@ -153,4 +153,40 @@ if (!function_exists("_paddingNol")) {
     }
 }
 
+if (!function_exists("hari")) {
+    function hari($nilai_hari)
+    {
+        if ($nilai_hari = 1) {
+            $hari = "Senin";
+        }elseif($nilai_hari = 2){
+            $hari = "Selasa";
+        }elseif($nilai_hari = 3){
+            $hari = "Rabu";
+        }elseif($nilai_hari = 4){
+            $hari = "Kamis";
+        }elseif($nilai_hari = 5){
+            $hari = "Jumat";
+        }elseif($nilai_hari = 6){
+            $hari = "Sabtu";
+        }elseif($nilai_hari = 7){
+            $hari = "Minggu";
+        }
+        return $hari;
+    }
+}
+
+if (!function_exists("jam_slot")) {
+    function jam_slot()
+    {
+        return array(
+            '1' => '08:00-09:00',
+            '2' => '09:00-10:00',
+            '3' => '10:00-11:00',
+            '4' => '11:00-12:00',
+            '5' => '12:00-13:00',
+            '6' => '13:00-14:00',
+            '7' => '14:00-15:00'
+        );
+    }
+}
 ?>

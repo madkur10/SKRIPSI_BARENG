@@ -38,6 +38,7 @@ if(empty($_SESSION)){
 		if($conn->commit()) { 
 			if(!empty($resultUsersPasien['user_id'])){
 				$_SESSION['users_id'] = $resultUsersPasien['user_id'];
+				$_SESSION['hak_akses'] = $resultUsersPasien['hak_akses_id'];
 				if ($resultUsersPasien['hak_akses_id'] == 2) {
 					$_SESSION['fullname'] = $resultUsersPasien['nama_pasien'];
 				}else{
@@ -54,13 +55,15 @@ if(empty($_SESSION)){
 			}
 
 			if(empty($_SESSION['users_id'])){
-				$return['metadata']['code'] 	= '201';
-				$return['metadata']['message'] 	= 'Login Gagal, Mohon Periksa Username & Password Anda.';
+				$return['metadata']['code'] 		= '201';
+				$return['metadata']['message'] 		= 'Gagal';
+				$return['metadata']['keterangan'] 	= 'Login Gagal, Mohon Periksa Username & Password Anda.';
 				echo json_encode($return);
 			}else{
-				$return['metadata']['code'] 	= '200';
-				$return['metadata']['message'] 	= 'Login Berhasil, Lanjutkan Ke Halaman Utama.';
-				$return['metadata']['redirect'] = 'index.php';
+				$return['metadata']['code'] 		= '200';
+				$return['metadata']['message'] 		= 'Berhasil';
+				$return['metadata']['keterangan'] 	= 'Login Berhasil, Lanjutkan Ke Halaman Utama.';
+				$return['metadata']['redirect'] 	= 'index.php';
 				echo json_encode($return);
 			}
 		}
@@ -71,8 +74,9 @@ if(empty($_SESSION)){
 		echo json_encode($return);
 	}	
 }else{
-	$return['metadata']['code'] 	= '403';;
-	$return['metadata']['message'] 	= 'Anda Memiliki Session Yang Berlangsung.';
+	$return['metadata']['code'] 		= '403';
+	$return['metadata']['message'] 		= 'Error';
+	$return['metadata']['keterangan'] 	= 'Anda Memiliki Session Yang Berlangsung.';
 	echo json_encode($return);
 }
 
