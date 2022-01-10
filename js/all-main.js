@@ -61,7 +61,7 @@ function submitWithFunction(e){
 }
 
 function notification (tittle, text, type){
-    swal(`Error Code : ${tittle}`, text, type);
+    swal(`Code : ${tittle}`, text, type);
 }
 
 $(".submitWithFile").on('click', function(){

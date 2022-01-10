@@ -50,7 +50,7 @@ if(empty($_SESSION)){
 				}
 
 				if($resultUsersPasien['hak_akses_id'] == 4){
-					$_SESSION['dotker_id'] = $resultUsersPasien['dokter_id'];	
+					$_SESSION['dokter_id'] = $resultUsersPasien['dokter_id'];	
 				}
 			}
 
@@ -77,6 +77,7 @@ if(empty($_SESSION)){
 	$return['metadata']['code'] 		= '403';
 	$return['metadata']['message'] 		= 'Error';
 	$return['metadata']['keterangan'] 	= 'Anda Memiliki Session Yang Berlangsung.';
+	$return['metadata']['redirect'] 	= 'action/logout.php';
 	echo json_encode($return);
 }
 

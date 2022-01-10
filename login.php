@@ -1,4 +1,10 @@
 <?php include "template/header.php"; ?>
+<?php
+session_start();
+if(!empty($_SESSION)){
+    header('Location: index.php');
+}
+?>
     <body>
         <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
             <div class="card card0 border-0">
