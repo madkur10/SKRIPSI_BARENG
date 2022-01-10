@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Jakarta');
 
 $servername_db 		= "196.169.66.126";
 $port_db			    = "80";

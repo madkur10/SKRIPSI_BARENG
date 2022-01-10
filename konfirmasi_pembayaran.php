@@ -89,7 +89,7 @@ require_once "lib/olah_table.php";
                                                         Mohon Selesaikan Pembayaran Anda Sebelum <br>
                                                         <h4>'.date('d-m-Y H:i:s',strtotime($resultKlinikJadwal['created_at'] . "+2hours")).'</h4>
                                                         <br>
-                                                        <a href="pasien_konfirmasi_pembayaran.php">
+                                                        <a href="pasien_konfirmasi_pembayaran.php?registrasi_id='.$_GET['registrasi_id'].'">
                                                                 <span class="btn btn-primary col-md-3 col-xs-12" style="font-weight:bold;">LAKUKAN PEMBAYARAN</span>
                                                         </a>';
                                                 }elseif($resultKlinikJadwal['status_selesai'] == 2){

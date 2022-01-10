@@ -12,10 +12,12 @@ require_once "template/header.php";
                                 klinik.nama_klinik,
                                 dokter.nama_dokter,
                                 jadwal_dokter.jam_mulai,
+                                jadwal_dokter.jam_selesai,
                                 registrasi.tgl_order,
                                 registrasi.created_at,
                                 pasien.no_mr, 
                                 pasien.nama_pasien,
+                                pasien.jenis_kelamin,
                                 bill_kasir.status_selesai,
                                 bill_kasir.nama_file_bukti_tf,
                                 registrasi.no_ruang
@@ -89,9 +91,17 @@ $resultKlinikJadwal     = $resKlinikJadwal->fetchAll();
                                             <td>
                                                 <?php
                                                     if($value['status_selesai'] == 3){
-                                                        ?>
-                                                        <a href="tele_konsultasi.php?uuid=<?=$value['no_ruang']?>"><span class="badge bg-primary"><i class="fas fa-camera"></i></span></a>
-                                                        <?php
+                                                        $noooooooooooow     = strtotime(date('Y-m-d H:i:s'));
+                                                        $rangeMulaiAwal     = strtotime(date('Y-m-d',strtotime($value['tgl_order'])).' '.$value['jam_mulai']);
+                                                        $rangeMulaiAkhir    = strtotime(date('Y-m-d',strtotime($value['tgl_order'])).' '.$value['jam_selesai']);
+                                                        
+                                                        if( ($noooooooooooow > $rangeMulaiAwal) && ($noooooooooooow < $rangeMulaiAkhir) ){
+                                                            echo '<a href="tele_konsultasi.php?uuid='.$value['no_ruang'].'"><span class="badge col-12 bg-primary"><i class="fas fa-camera"></i></span></a>';
+                                                        }elseif( $noooooooooooow < $rangeMulaiAwal ){
+                                                            echo '<span class="badge col-12 bg-secondary"><i class="fas fa-camera"></i></span>';
+                                                        }elseif( $noooooooooooow > $rangeMulaiAkhir ){
+                                                            echo '<span class="badge col-12 bg-secondary"><i class="fas fa-camera"></i></span>';
+                                                        }
                                                     }else{
                                                         echo '-';
                                                     }

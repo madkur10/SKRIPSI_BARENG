@@ -30,7 +30,7 @@ if(!empty($_GET['histori']) && $_GET['histori'] === 'true'){
                                     pasien on pasien.id = registrasi.pasien_id inner join
                                     bill_kasir on bill_kasir.registrasi_id = registrasi.id
                                 where 
-                                    dokter.id = :dokter_id and bill_kasir.status_selesai = 3 and registrasi.tgl_order < NOW()";
+                                    dokter.id = :dokter_id and bill_kasir.status_selesai = 3 and registrasi.tgl_order::date < '".date('Y-m-d')."'";
     $resKlinikJadwal            = $conn->prepare($queryKlinikJadwal);
     $resKlinikJadwal->bindValue(':dokter_id', $_SESSION['dokter_id']);
     $resKlinikJadwal->execute();
@@ -60,7 +60,7 @@ if(!empty($_GET['histori']) && $_GET['histori'] === 'true'){
                                     pasien on pasien.id = registrasi.pasien_id inner join
                                     bill_kasir on bill_kasir.registrasi_id = registrasi.id
                                 where 
-                                    dokter.id = :dokter_id and bill_kasir.status_selesai = 3 and registrasi.tgl_order > NOW()";
+                                    dokter.id = :dokter_id and bill_kasir.status_selesai = 3 and registrasi.tgl_order::date >= '".date('Y-m-d')."'";
     $resKlinikJadwal            = $conn->prepare($queryKlinikJadwal);
     $resKlinikJadwal->bindValue(':dokter_id', $_SESSION['dokter_id']);
     $resKlinikJadwal->execute();
@@ -122,9 +122,9 @@ if(!empty($_GET['histori']) && $_GET['histori'] === 'true'){
                                                     $rangeMulaiAkhir    = strtotime(date('Y-m-d',strtotime($value['tgl_order'])).' '.$value['jam_selesai']);
 
                                                     if( ($noooooooooooow > $rangeMulaiAwal) && ($noooooooooooow < $rangeMulaiAkhir) ){
-                                                        echo '<span class="badge bg-danger col-12">Akan Datang</span>';
-                                                    }elseif( $noooooooooooow < $rangeMulaiAwal ){
                                                         echo '<span class="badge bg-success col-12">Sedang Berlangsung</span>';
+                                                    }elseif( $noooooooooooow < $rangeMulaiAwal ){
+                                                            echo '<span class="badge bg-danger col-12">Akan Datang</span>';
                                                     }elseif( $noooooooooooow > $rangeMulaiAkhir ){
                                                         echo '<span class="badge bg-success col-12">Selesai</span>';
                                                     }
@@ -133,12 +133,14 @@ if(!empty($_GET['histori']) && $_GET['histori'] === 'true'){
                                             </td>
                                             <td>
                                                 <?php
-                                                    if( ($noooooooooooow > $rangeMulaiAwal) && ($noooooooooooow < $rangeMulaiAkhir) ){
-                                                        echo '<span class="badge col-12 bg-secondary"><i class="fas fa-camera"></i></span>';
-                                                    }elseif( $noooooooooooow < $rangeMulaiAwal ){
-                                                        echo '<a href="tele_konsultasi.php?uuid='.$value['no_ruang'].'"><span class="badge col-12 bg-primary"><i class="fas fa-camera"></i></span></a>';
-                                                    }elseif( $noooooooooooow > $rangeMulaiAkhir ){
-                                                        echo '<span class="badge col-12 bg-secondary"><i class="fas fa-camera"></i></span>';
+                                                    if($value['status_selesai'] == 3){
+                                                        if( ($noooooooooooow > $rangeMulaiAwal) && ($noooooooooooow < $rangeMulaiAkhir) ){                                                            
+                                                                echo '<a href="tele_konsultasi.php?uuid='.$value['no_ruang'].'"><span class="badge col-12 bg-primary"><i class="fas fa-camera"></i></span></a>';
+                                                        }elseif( $noooooooooooow < $rangeMulaiAwal ){
+                                                            echo '<span class="badge col-12 bg-secondary"><i class="fas fa-camera"></i></span>';
+                                                        }elseif( $noooooooooooow > $rangeMulaiAkhir ){
+                                                            echo '<span class="badge col-12 bg-secondary"><i class="fas fa-camera"></i></span>';
+                                                        }
                                                     }
                                                 ?>
                                             </td>
