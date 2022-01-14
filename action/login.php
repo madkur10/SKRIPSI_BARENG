@@ -38,7 +38,10 @@ if(empty($_SESSION)){
 		if($conn->commit()) { 
 			if(!empty($resultUsersPasien['user_id'])){
 				$_SESSION['users_id'] = $resultUsersPasien['user_id'];
+				$_SESSION['user_name'] = $resultUsersPasien['username'];
 				$_SESSION['hak_akses'] = $resultUsersPasien['hak_akses_id'];
+				$_SESSION['password'] = $resultUsersPasien['password'];
+
 				if ($resultUsersPasien['hak_akses_id'] == 2) {
 					$_SESSION['fullname'] = $resultUsersPasien['nama_pasien'];
 				}else{
@@ -63,7 +66,11 @@ if(empty($_SESSION)){
 				$return['metadata']['code'] 		= '200';
 				$return['metadata']['message'] 		= 'Berhasil';
 				$return['metadata']['keterangan'] 	= 'Login Berhasil, Lanjutkan Ke Halaman Utama.';
-				$return['metadata']['redirect'] 	= 'index.php';
+				if ($_SESSION['hak_akses']==2) {
+					$return['metadata']['redirect'] 	= 'pasien_daftar_pilih_poli.php';
+				}else{
+					$return['metadata']['redirect'] 	= 'index.php';
+				}
 				echo json_encode($return);
 			}
 		}

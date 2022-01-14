@@ -156,19 +156,19 @@ if (!function_exists("_paddingNol")) {
 if (!function_exists("hari")) {
     function hari($nilai_hari)
     {
-        if ($nilai_hari = 1) {
+        if ($nilai_hari == 1) {
             $hari = "Senin";
-        }elseif($nilai_hari = 2){
+        }elseif($nilai_hari == 2){
             $hari = "Selasa";
-        }elseif($nilai_hari = 3){
+        }elseif($nilai_hari == 3){
             $hari = "Rabu";
-        }elseif($nilai_hari = 4){
+        }elseif($nilai_hari == 4){
             $hari = "Kamis";
-        }elseif($nilai_hari = 5){
+        }elseif($nilai_hari == 5){
             $hari = "Jumat";
-        }elseif($nilai_hari = 6){
+        }elseif($nilai_hari == 6){
             $hari = "Sabtu";
-        }elseif($nilai_hari = 7){
+        }elseif($nilai_hari == 7){
             $hari = "Minggu";
         }
         return $hari;

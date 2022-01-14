@@ -96,11 +96,11 @@ $resultKlinikJadwal     = $resKlinikJadwal->fetchAll();
                                                         $rangeMulaiAkhir    = strtotime(date('Y-m-d',strtotime($value['tgl_order'])).' '.$value['jam_selesai']);
                                                         
                                                         if( ($noooooooooooow > $rangeMulaiAwal) && ($noooooooooooow < $rangeMulaiAkhir) ){
-                                                            echo '<a href="tele_konsultasi.php?uuid='.$value['no_ruang'].'"><span class="badge col-12 bg-primary"><i class="fas fa-camera"></i></span></a>';
+                                                            echo '<a href="https://meet.jit.si/'.$value['no_ruang'].'" target="_blank"><span class="btn btn-sm btn-primary"><i class="fas fa-video"></i></span></a>';
                                                         }elseif( $noooooooooooow < $rangeMulaiAwal ){
-                                                            echo '<span class="badge col-12 bg-secondary"><i class="fas fa-camera"></i></span>';
+                                                            echo '<span class="btn btn-sm btn-secondary"><i class="fas fa-video"></i></span>';
                                                         }elseif( $noooooooooooow > $rangeMulaiAkhir ){
-                                                            echo '<span class="badge col-12 bg-secondary"><i class="fas fa-camera"></i></span>';
+                                                            echo '<span class="btn btn-sm btn-secondary"><i class="fas fa-video"></i></span>';
                                                         }
                                                     }else{
                                                         echo '-';

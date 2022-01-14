@@ -15,5 +15,5 @@ require_once "lib/olah_table.php";
         <script src="../js/font-awesome/all.min.js" crossorigin="anonymous"></script>
         <script src="../js/jquery.min.js"></script>
         <script src="../js/sweetalert.min.js"></script>
-        <link rel="icon" type="image/x-icon" href="../img/logo_ihc.png">
+        <link rel="icon" type="image/x-icon" href="../assets/img/logo_ihc.png">
     </head>

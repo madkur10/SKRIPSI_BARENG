@@ -53,7 +53,7 @@
                                         <label for="alamatPasien">Alamat Sesuai Domisili <span style="color: red"> *</span></label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="password" type="text" name="password" required="true" />
+                                        <input class="form-control" id="password" type="password" name="password" required="true" />
                                         <label for="password">password <span style="color: red"> *</span></label>
                                     </div>
                                     <div class="mt-4 mb-0">

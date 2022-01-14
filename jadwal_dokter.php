@@ -94,8 +94,7 @@ $resultDokter		= $resDokter->fetchAll();
                                                             <center><h5>Jika anda melanjutkan, maka jadwal dokter akan terhapus.</h5></center>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <a href="action/jadwal_dokter_action.php?aksi=delete&id=<?=$value['jadwal_dokter_id']?>" type="button" class="btn btn-danger">Hapus</a>
+                                                            <a onclick="delete_data('action/jadwal_dokter_action.php?aksi=delete&id=<?=$value['jadwal_dokter_id']?>')" type="button" class="btn btn-danger">Hapus</a>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -192,34 +191,11 @@ $resultDokter		= $resDokter->fetchAll();
                         </div> 
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-primary submit">Submit</button>
+                        <span class="btn btn-primary col-12 submit">Submit</span>
                     </div>
                 </form>
                 </div>
             </div>
         </div>
-        <script>
-            function getDokter(e) {
-                let klinikId = $(e).val();
-                $.ajax({
-                    url: `action/ajaxData/getDokter.php?klinik_id=`+klinikId,
-                    type: `GET`,
-                    dataType: 'json',
-                    success: function (result) {
-                        $(`select[name=dokter_id]`).html(`<option value="" selected>-- Pilih Dokter --</option>`);
-
-                        if(result.metadata.code == 200){
-                            $.each(result.response, function(i, item) {
-                                $(`select[name=dokter_id]`).append(`<option value='${item.id}'>${item.nama_dokter}</option>`);
-                            });  
-                        }                                    
-                    },
-                    error: function (error, text, code) {
-
-                    }
-                });
-            }
-        </script>
 <?php require_once "template/footer.php"; ?>
 

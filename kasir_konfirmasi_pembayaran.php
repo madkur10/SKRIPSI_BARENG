@@ -12,6 +12,7 @@ require_once "template/header.php";
                                 klinik.nama_klinik,
                                 dokter.nama_dokter,
                                 jadwal_dokter.jam_mulai,
+                                jadwal_dokter.jam_selesai,
                                 registrasi.tgl_order,
                                 registrasi.created_at,
                                 pasien.no_mr, 
@@ -67,17 +68,17 @@ $resultKlinikJadwal     = $resKlinikJadwal->fetchAll();
                                         <tr>
                                             <td><center><?php echo $no;?></center></td>
                                             <td><?php echo $value['registrasi_id'];?></td>
-                                            <td><?php echo $value['no_mr'];?> - <?php echo $value['nama_pasien'];?></td>
-                                            <td><?php echo $value['nama_klinik'];?><br><?php echo $value['nama_dokter'];?><br><?php echo $value['jam_mulai'];?></td>
+                                            <td><strong><?php echo $value['no_mr'];?> - <?php echo $value['nama_pasien'];?></strong></td>
+                                            <td><strong><?php echo $value['nama_klinik'];?></strong><br><?php echo $value['nama_dokter'];?><br>(<?php echo $value['jam_mulai']." - ".$value['jam_selesai'];?>)</td>
                                             <td>
                                                 <center>
                                                     <?php
                                                         if($value['status_selesai'] == 1){
-                                                            echo '<span class="badge bg-danger">Menunggu Pembayaran</span>';
+                                                            echo '<span class="btn btn-sm btn-danger"><strong>Menunggu Pembayaran</strong></span>';
                                                         }elseif($value['status_selesai'] == 2){
-                                                            echo '<span class="badge bg-warning">Menunggu Konfirmasi Kasir</span>';
+                                                            echo '<span class="btn btn-sm btn-warning"><strong>Menunggu Konfirmasi Kasir</strong></span>';
                                                         }elseif($value['status_selesai'] == 3){
-                                                            echo '<span class="badge bg-success">LUNAS</span>';
+                                                            echo '<span class="btn btn-sm btn-success"><strong>LUNAS</strong></span>';
                                                         }
                                                     ?>    
                                                 </center>
@@ -86,7 +87,7 @@ $resultKlinikJadwal     = $resKlinikJadwal->fetchAll();
                                                 <?php
                                                     if($value['status_selesai'] == 2){
                                                         ?>
-                                                        <button class="badge bg-primary" data-bs-toggle="modal" data-bs-target="#konfirmasiBayar<?=$value['registrasi_id']?>"><i class="fas fa-check"></i></button>
+                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#konfirmasiBayar<?=$value['registrasi_id']?>"><i class="fas fa-check"></i></button>
                                                         <div class="modal" id="konfirmasiBayar<?=$value['registrasi_id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">

@@ -18,12 +18,13 @@ $queryUsers		= "SELECT
                     inner join hak_akses on
                         users.hak_akses_id = hak_akses.id
                     where
-                        users.deleted_by is null";
+                        users.deleted_by is null
+                    order by user_id asc";
 $resUsers			= $conn->prepare($queryUsers);
 $resUsers->execute();
 $resultUsers		= $resUsers->fetchAll();
 
-$queryHakAkses		= "SELECT * from hak_akses where deleted_by is null";
+$queryHakAkses		= "SELECT * from hak_akses where deleted_by is null and id <> 2";
 $resHakAkses			= $conn->prepare($queryHakAkses);
 $resHakAkses->execute();
 $resultHakAkses		= $resHakAkses->fetchAll();
@@ -81,7 +82,7 @@ $resultHakAkses		= $resHakAkses->fetchAll();
                                                 <div class="modal fade" id="updatemodal<?=$value['user_id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
-                                                        <form action="action/users_action.php?aksi=update" method="POST">
+                                                        <form id="updateData<?=$value['user_id']?>" action="action/users_action.php?aksi=update" method="POST">
                                                             <div class="modal-header">
                                                             <h5 class="modal-title">Ubah Pengguna</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -119,8 +120,7 @@ $resultHakAkses		= $resHakAkses->fetchAll();
                                                                 </div>   
                                                             </div>
                                                             <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                                <span class="btn btn-primary col-12" onclick="update_data('<?=$value['user_id']?>')">Submit</span>
                                                             </div>
                                                         </form>
                                                         </div>
@@ -140,7 +140,7 @@ $resultHakAkses		= $resHakAkses->fetchAll();
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <a href="action/users_action.php?aksi=delete&id=<?=$value['user_id']?>" type="button" class="btn btn-danger">Hapus</a>
+                                                            <a onclick="delete_data('action/users_action.php?aksi=delete&id=<?=$value['user_id']?>')" type="button" class="btn btn-danger">Hapus</a>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -209,8 +209,7 @@ $resultHakAkses		= $resHakAkses->fetchAll();
                         </div>   
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <span class="btn btn-primary col-12 submit">Submit</span>
                     </div>
                 </form>
                 </div>

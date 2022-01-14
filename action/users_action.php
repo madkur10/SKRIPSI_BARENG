@@ -28,12 +28,14 @@ if ($_GET['aksi'] == 'create') {
         insert_tabel("users", $update_table_users);
         
         if($conn->commit()) { 
-            $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Ditambah';
+            $return['metadata']['code'] 	    = '200';
+            $return['metadata']['message'] 	    = 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Ditambah';
+            $return['metadata']['redirect'] 	= 'users.php';
             echo json_encode($return);
         }
     }catch (PDOException $e) {
-        $return['metadata']['code'] 	= '201';;
+        $return['metadata']['code'] 	= '201';
         $return['metadata']['message'] 	= $e->getMessage();;
         echo json_encode($return);
     }
@@ -49,7 +51,9 @@ if ($_GET['aksi'] == 'create') {
         
         if($conn->commit()) { 
             $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Terhapus';
+            $return['metadata']['message'] 	= 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Terhapus';
+            $return['metadata']['redirect'] = 'users.php';
             echo json_encode($return);
         }
     }catch (PDOException $e) {
@@ -77,8 +81,14 @@ if ($_GET['aksi'] == 'create') {
         update_tabel("users", $update_table_users, "WHERE id = ?", array($user_id));
         
         if($conn->commit()) { 
-            $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Terupdate';
+            $return['metadata']['code'] 	    = '200';
+            $return['metadata']['message'] 	    = 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Terupdate';
+            if(isset($_GET['tipe'])){
+                $return['metadata']['redirect'] 	= 'action/logout.php';
+            }else{
+                $return['metadata']['redirect'] 	= 'users.php';
+            }
             echo json_encode($return);
         }
     }catch (PDOException $e) {
@@ -88,5 +98,4 @@ if ($_GET['aksi'] == 'create') {
     }
 }
 
-header('Location: ../users.php');
 ?>

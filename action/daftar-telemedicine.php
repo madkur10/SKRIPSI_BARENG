@@ -44,9 +44,10 @@ if(!empty($_SESSION)){
 		insert_tabel("bill_kasir", $isi_table_bill_kasir);
 		
 		if($conn->commit()) { 
-			$return['metadata']['code'] 	= '200';;
-			$return['metadata']['message'] 	= 'Konsultasi Berhasil Di Daftarkan.';
-			$return['metadata']['redirect'] = 'konfirmasi_pembayaran.php?registrasi_id='.$isi_table_registrasi["id"];
+			$return['metadata']['code'] 		= '200';;
+			$return['metadata']['message'] 		= 'Berhasil';
+			$return['metadata']['keterangan'] 	= 'Konsultasi Berhasil Di Daftarkan.';
+			$return['metadata']['redirect'] 	= 'konfirmasi_pembayaran.php?registrasi_id='.$isi_table_registrasi["id"];
 			echo json_encode($return);
 		}
 

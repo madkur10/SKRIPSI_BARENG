@@ -21,8 +21,10 @@ if ($_GET['aksi'] == 'create') {
         insert_tabel("hak_akses", $update_table_hak_akses);
         
         if($conn->commit()) { 
-            $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Ditambah';
+            $return['metadata']['code'] 	    = '200';
+            $return['metadata']['message'] 	    = 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Ditambah';
+            $return['metadata']['redirect'] 	= 'hak_akses.php';
             echo json_encode($return);
         }
     }catch (PDOException $e) {
@@ -41,8 +43,10 @@ if ($_GET['aksi'] == 'create') {
         update_tabel("hak_akses", $delete_table_hak_akses, "WHERE id = ?", array($hak_akses_id));
         
         if($conn->commit()) { 
-            $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Terhapus';
+            $return['metadata']['code'] 	    = '200';
+            $return['metadata']['message'] 	    = 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Terhapus';
+            $return['metadata']['redirect'] 	= 'hak_akses.php';
             echo json_encode($return);
         }
     }catch (PDOException $e) {
@@ -63,8 +67,10 @@ if ($_GET['aksi'] == 'create') {
         update_tabel("hak_akses", $update_table_hak_akses, "WHERE id = ?", array($hak_akses_id));
         
         if($conn->commit()) { 
-            $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Terupdate';
+            $return['metadata']['code'] 	    = '200';
+            $return['metadata']['message'] 	    = 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Terupdate';
+            $return['metadata']['redirect'] 	= 'hak_akses.php';
             echo json_encode($return);
         }
     }catch (PDOException $e) {
@@ -74,5 +80,4 @@ if ($_GET['aksi'] == 'create') {
     }
 }
 
-header('Location: ../hak_akses.php');
 ?>

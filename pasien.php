@@ -63,7 +63,7 @@ $resultPasien		= $resPasien->fetchAll();
                                                 <div class="modal fade" id="updatemodal<?=$value['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
-                                                            <form id="formPasien<?=$value['id']?>" method="POST" action="action/register-new-account.php">
+                                                            <form id="updateData<?=$value['id']?>" method="POST" action="action/pasien_action.php">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title">Ubah Pasien</h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -127,8 +127,7 @@ $resultPasien		= $resPasien->fetchAll();
                                                                         </div>  
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    <button class="btn btn-primary submit">Submit</button>
+                                                                    <span class="btn btn-primary col-12" onclick="update_data('<?=$value['id']?>')">Submit</span>
                                                                 </div>
                                                             </form>
                                                         </div>

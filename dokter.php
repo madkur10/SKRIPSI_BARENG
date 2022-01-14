@@ -84,7 +84,7 @@ $resultPengguna		= $resPengguna->fetchAll();
                                                 <div class="modal fade" id="updatemodal<?=$value['user_id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
-                                                        <form action="action/dokter_action.php?aksi=update" method="POST">
+                                                        <form id="updateData<?=$value['dokter_id']?>" action="action/dokter_action.php?aksi=update" method="POST">
                                                             <div class="modal-header">
                                                             <h5 class="modal-title">Ubah Dokter</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -121,16 +121,15 @@ $resultPengguna		= $resPengguna->fetchAll();
                                                                 </div>   
                                                             </div>
                                                             <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                                <span class="btn btn-primary col-12" onclick="update_data('<?=$value['dokter_id']?>')">Submit</span>
                                                             </div>
                                                         </form>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#hapusmodal<?=$value['user_id']?>"><i class="fas fa-trash"></i></button>
-                                                <div class="modal" id="hapusmodal<?=$value['user_id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#hapusmodal<?=$value['dokter_id']?>"><i class="fas fa-trash"></i></button>
+                                                <div class="modal" id="hapusmodal<?=$value['dokter_id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                         <div class="modal-header">
@@ -142,7 +141,7 @@ $resultPengguna		= $resPengguna->fetchAll();
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <a href="action/dokter_action.php?aksi=delete&id=<?=$value['dokter_id']?>" type="button" class="btn btn-danger">Hapus</a>
+                                                            <a onclick="delete_data('action/dokter_action.php?aksi=delete&id=<?=$value['dokter_id']?>')" type="button" class="btn btn-danger">Hapus</a>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -210,8 +209,7 @@ $resultPengguna		= $resPengguna->fetchAll();
                         </div>   
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <span class="btn btn-primary col-12 submit">Submit</span>
                     </div>
                 </form>
                 </div>

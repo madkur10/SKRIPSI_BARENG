@@ -56,7 +56,7 @@ $resultClinic		= $resClinic->fetchAll();
                                                 <div class="modal fade" id="updatemodal<?=$value['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
-                                                        <form action="action/klinik_action.php?aksi=update" method="POST">
+                                                        <form id="updateData<?=$value['id']?>" action="action/klinik_action.php?aksi=update" method="POST">
                                                             <div class="modal-header">
                                                             <h5 class="modal-title">Ubah Klinik</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -71,8 +71,7 @@ $resultClinic		= $resClinic->fetchAll();
                                                                 </div> 
                                                             </div>
                                                             <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                                <span class="btn btn-primary col-12" onclick="update_data('<?=$value['id']?>')">Submit</span>
                                                             </div>
                                                         </form>
                                                         </div>
@@ -92,7 +91,7 @@ $resultClinic		= $resClinic->fetchAll();
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <a href="action/klinik_action.php?aksi=delete&id=<?=$value['id']?>" type="button" class="btn btn-danger">Hapus</a>
+                                                            <a onclick="delete_data('action/klinik_action.php?aksi=delete&id=<?=$value['id']?>')" type="button" class="btn btn-danger">Hapus</a>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -138,8 +137,7 @@ $resultClinic		= $resClinic->fetchAll();
                         </div>  
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <span class="btn btn-primary col-12 submit">Submit</span>
                     </div>
                 </form>
                 </div>

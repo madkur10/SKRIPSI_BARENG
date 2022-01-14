@@ -7,6 +7,35 @@ if(empty($_SESSION)){
 require_once "lib/koneksi.php";
 require_once "lib/olah_table.php";
 
+$queryJadwalDokter		= "select
+                        jadwal_dokter.id as jadwal_dokter_id,
+                        jadwal_dokter.hari,
+                        jadwal_dokter.jam_mulai,
+                        jadwal_dokter.jam_selesai,
+                        jadwal_dokter.dokter_id,
+                        jadwal_dokter.klinik_id,
+                        klinik.nama_klinik,
+                        dokter.nama_dokter
+                    from
+                            jadwal_dokter
+                        inner join klinik on
+                            jadwal_dokter.klinik_id = klinik.id
+                        inner join dokter on
+                            jadwal_dokter.dokter_id = dokter.id
+                    where
+                        jadwal_dokter.deleted_by is null
+                    order by hari";
+$resJadwalDokter			= $conn->prepare($queryJadwalDokter);
+$resJadwalDokter->execute();
+$resultJadwalDokter		= $resJadwalDokter->fetchAll();
+
+if (!empty($resultJadwalDokter)) {
+    foreach ($resultJadwalDokter as $key => $value) {
+        $arr_data[$value['hari']][$value['nama_klinik']][$value['nama_dokter']]['jam_mulai'][]      = $value['jam_mulai'];
+        $arr_data[$value['hari']][$value['nama_klinik']][$value['nama_dokter']]['jam_selesai'][]    = $value['jam_selesai'];
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -159,36 +188,47 @@ require_once "lib/olah_table.php";
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        JADWAL DOKTER
+                                    </div>
                                     <div class="card-body">
-                                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
-                                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                                <div class="carousel-indicators">
-                                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                                </div>
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <img src="assets/img/carousel_1.jpg" class="d-block w-100 carouselsize" alt="...">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img src="assets/img/carousel_2.jpg" class="d-block w-100 carouselsize" alt="...">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img src="assets/img/carousel_3.jpg" class="d-block w-100 carouselsize" alt="...">
-                                                    </div>
-                                                </div>
-                                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Previous</span>
-                                                </button>
-                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Next</span>
-                                                </button>
-                                            </div>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <?php foreach ($arr_data as $key => $value) { ?>
+
+                                                    <thead class="table-dark">
+                                                        <th colspan="3" class="text-center"><?php echo hari($key); ?></th>
+                                                    </thead>
+                                                    <thead>
+                                                        <th>Nama Klinik</th>
+                                                        <th>Nama Dokter</th>
+                                                        <th>Jam Slot</th>
+                                                    </thead>
+
+                                                <?php 
+                                                    foreach ($value as $key1 => $value1) {
+                                                        foreach ($value1 as $key2 => $value2) {
+                                                ?>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><?php echo $key1;?></td>
+                                                            <td><?php echo $key2;?></td>
+                                                            <td>
+                                                                <?php foreach ($value2 as $key3 => $value3) {
+                                                                    echo json_encode($value3);
+                                                                }?>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                <?php 
+                                                        }
+                                                    }
+                                                }?>
+                                            </table>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

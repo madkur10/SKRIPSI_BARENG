@@ -25,8 +25,10 @@ if ($_GET['aksi'] == 'create') {
         insert_tabel("dokter", $update_table_dokter);
         
         if($conn->commit()) { 
-            $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Ditambah';
+            $return['metadata']['code'] 	    = '200';
+            $return['metadata']['message'] 	    = 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Ditambah';
+            $return['metadata']['redirect'] 	= 'dokter.php';
             echo json_encode($return);
         }
     }catch (PDOException $e) {
@@ -45,8 +47,10 @@ if ($_GET['aksi'] == 'create') {
         update_tabel("dokter", $delete_table_dokter, "WHERE id = ?", array($dokter_id));
         
         if($conn->commit()) { 
-            $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Terhapus';
+            $return['metadata']['code'] 	    = '200';
+            $return['metadata']['message'] 	    = 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Terhapus';
+            $return['metadata']['redirect'] 	= 'dokter.php';
             echo json_encode($return);
         }
     }catch (PDOException $e) {
@@ -71,8 +75,10 @@ if ($_GET['aksi'] == 'create') {
         update_tabel("dokter", $update_table_dokter, "WHERE id = ?", array($dokter_id));
         
         if($conn->commit()) { 
-            $return['metadata']['code'] 	= '200';
-            $return['metadata']['message'] 	= 'Data Berhasil Terupdate';
+            $return['metadata']['code'] 	    = '200';
+            $return['metadata']['message'] 	    = 'Berhasil';
+            $return['metadata']['keterangan'] 	= 'Data Berhasil Terupdate';
+            $return['metadata']['redirect'] 	= 'dokter.php';
             echo json_encode($return);
         }
     }catch (PDOException $e) {
@@ -82,5 +88,4 @@ if ($_GET['aksi'] == 'create') {
     }
 }
 
-header('Location: ../dokter.php');
 ?>

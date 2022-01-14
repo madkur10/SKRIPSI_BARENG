@@ -25,9 +25,10 @@ if(!empty($_SESSION)){
 		update_tabel("registrasi", $isi_table_registrasi, "WHERE id = ?", array($registrasi_id));
 		
 		if($conn->commit()) { 
-			$return['metadata']['code'] 	= '200';;
-			$return['metadata']['message'] 	= 'Konsultasi Berhasil Di Daftarkan.';
-			$return['metadata']['redirect'] = 'kasir_konfirmasi_pembayaran.php';
+			$return['metadata']['code'] 		= '200';;
+			$return['metadata']['message'] 		= 'Berhasil';
+			$return['metadata']['keterangan'] 	= 'Verifikasi Pembayaran Berhasil.';
+			$return['metadata']['redirect'] 	= 'kasir_konfirmasi_pembayaran.php';
 			echo json_encode($return);
 		}
 

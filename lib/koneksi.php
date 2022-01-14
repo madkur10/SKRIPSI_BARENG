@@ -1,11 +1,11 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
 
-$servername_db 		= "196.169.66.126";
-$port_db			    = "80";
-$databasename_db	= "db_telemedicine";
+$servername_db 		= "127.0.0.1";
+$port_db			    = "5432";
+$databasename_db	= "db_telemedicine_new";
 $username_db		  = "postgres";
-$password_db		  = "R5p3ln1!!";
+$password_db		  = "123madkur";
 
 try {
   $conn = new PDO("pgsql:host=$servername_db;port=$port_db;dbname=$databasename_db;user=$username_db;password=$password_db");
