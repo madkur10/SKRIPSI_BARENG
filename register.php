@@ -14,9 +14,10 @@
                                         <label for="namaLengkap">Nama Lengkap <span style="color: red"> *</span></label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="nomorIdentitas" name="nomorIdentitas" />
+                                        <input class="form-control" id="nomorIdentitas" name="nomorIdentitas" onkeyup="checkNik(this)" />
                                         <label for="nomorIdentitas">NIK / KIA <span style="color: red"> *</span></label>
                                     </div>
+                                    <div id="check-nik"></div>
                                     <div class="form-floating mb-3">
                                         <select class="form-select" name="jenisKelamin" id="jenisKelamin" required="true">
                                             <option value="" selected>-- Pilih Jenis Kelamin --</option>
@@ -53,9 +54,14 @@
                                         <label for="alamatPasien">Alamat Sesuai Domisili <span style="color: red"> *</span></label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="password" type="password" name="password" required="true" />
-                                        <label for="password">password <span style="color: red"> *</span></label>
+                                        <input class="form-control" id="password" type="password" name="password" required="true" onkeyup="checkPassword()"/>
+                                        <label for="password">Password <span style="color: red"> *</span></label>
                                     </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="re-password" type="password" name="re_password" required="true" onkeyup="checkPassword()" />
+                                        <label for="repassword">Masukkan Ulang Password <span style="color: red"> *</span></label>
+                                    </div>
+                                    <div id="check-pass"></div>
                                     <div class="mt-4 mb-0">
                                         <div class="d-grid"><span class="btn btn-primary btn-block submit">DAFTAR</button></div>
                                     </div>

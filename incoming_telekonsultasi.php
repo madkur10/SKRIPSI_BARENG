@@ -49,6 +49,7 @@ if(!empty($_GET['histori']) && $_GET['histori'] === 'true'){
                                     pasien.no_mr, 
                                     pasien.nama_pasien,
                                     pasien.jenis_kelamin,
+                                    pasien.alamat,
                                     bill_kasir.status_selesai,
                                     bill_kasir.nama_file_bukti_tf,
                                     registrasi.no_ruang
@@ -90,7 +91,7 @@ if(!empty($_GET['histori']) && $_GET['histori'] === 'true'){
                                         <tr>
                                             <th><center>No.</center></th>
                                             <th>No Registrasi</th>
-                                            <th>Pasien</th>
+                                            <th>Identitas Pasien</th>
                                             <th>Tujuan Konsultasi</th>
                                             <th>Status Konsultasi</th>
                                             <th>Action</th>
@@ -106,8 +107,28 @@ if(!empty($_GET['histori']) && $_GET['histori'] === 'true'){
                                             <td><center><?php echo $no;?></center></td>
                                             <td><?php echo $value['registrasi_id'];?></td>
                                             <td>
-                                                <?php echo $value['no_mr'];?> - <?php echo $value['nama_pasien'];?><br>
-                                                <?php echo $value['jenis_kelamin'];?>
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>Nama Pasien</td>
+                                                        <td>:</td>
+                                                        <td><?php echo $value['nama_pasien'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>No. MR</td>
+                                                        <td>:</td>
+                                                        <td><?php echo $value['no_mr'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Alamat</td>
+                                                        <td>:</td>
+                                                        <td><?php echo $value['alamat'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jenis Kelamin</td>
+                                                        <td>:</td>
+                                                        <td><?php echo $value['jenis_kelamin'];?></td>
+                                                    </tr>
+                                                </table>
                                             </td>
                                             <td>
                                                 <?php echo $value['nama_klinik'];?><br>
@@ -135,11 +156,11 @@ if(!empty($_GET['histori']) && $_GET['histori'] === 'true'){
                                                 <?php
                                                     if($value['status_selesai'] == 3){
                                                         if( ($noooooooooooow > $rangeMulaiAwal) && ($noooooooooooow < $rangeMulaiAkhir) ){                                                            
-                                                                echo '<a href="tele_konsultasi.php?uuid='.$value['no_ruang'].'"><span class="btn btn-primary"><i class="fas fa-video"></i></span></a>';
+                                                                echo '<a href="tele_konsultasi.php?uuid='.$value['no_ruang'].'"><span class="btn btn-sm btn-primary"><i class="fas fa-video"></i></span></a>';
                                                         }elseif( $noooooooooooow < $rangeMulaiAwal ){
-                                                            echo '<span class="btn btn-secondary"><i class="fas fa-video"></i></span>';
+                                                            echo '<span class="btn btn-sm btn-secondary"><i class="fas fa-video"></i></span>';
                                                         }elseif( $noooooooooooow > $rangeMulaiAkhir ){
-                                                            echo '<span class="btn btn-secondary"><i class="fas fa-video"></i></span>';
+                                                            echo '<span class="btn btn-sm btn-secondary"><i class="fas fa-video"></i></span>';
                                                         }
                                                     }
                                                 ?>

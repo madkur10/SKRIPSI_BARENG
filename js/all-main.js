@@ -182,3 +182,61 @@ function getDokter(e) {
     });
 }
 
+function exporttoexcel(datanya, judulnya) {
+    var a = document.createElement('a');
+    var data_type = 'data:application/vnd.ms-excel';
+    var table_div = document.getElementById(datanya);
+    var table_html = table_div.outerHTML.replace(/ /g, '%20');
+    a.href = data_type + ', ' + table_html;
+    a.download = judulnya + '.xls';
+    a.click();
+    e.preventDefault();
+}
+
+function printData(id)
+{
+    var divToPrint = $("#"+id);
+    var myStyle = '<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">';
+    newWin= window.open("");
+    newWin.document.write(myStyle + divToPrint.html());
+    newWin.print();
+    newWin.close();
+}
+function printDiv(id){        
+    printData(id);
+}
+
+function checkNik(e) {
+    var length = $(e).val().length
+    if (length >= 10) {
+        $.ajax({
+            url: `action/ajaxData/validation.php?tipe=checknik`,
+            type: `POST`,
+            data: { nik :  $(e).val()},
+            dataType: 'json',
+            success: function (result) {
+                if(result.metadata.code == 201){
+                    $(`#check-nik`).html('<p><font color="red">*No Identitas Sudah Digunakan</font></p>')
+                }else if (result.metadata.code == 200) {
+                    $(`#check-nik`).html('<p><font color="green">No Identitas Valid</font></p>')
+                }                                   
+            },
+            error: function (error, text, code) {
+                $(`#check-nik`).html('<p><font color="green">No Identitas Valid</font></p>')
+            }
+        });
+    }else{
+        $(`#check-nik`).html('<p><font color="red">*Panjang karakter Minimal 10</font></p>')
+    }
+}
+
+function checkPassword(e) {
+    var password = $(`#password`).val()
+    var repassword = $(`#re-password`).val()
+
+    if (password === repassword) {
+        $(`#check-pass`).html('<p><font color="green">Password Sudah Valid</font></p>')
+    }else{
+        $(`#check-pass`).html('<p><font color="red">Password Tidak Valid</font></p>')
+    }
+}

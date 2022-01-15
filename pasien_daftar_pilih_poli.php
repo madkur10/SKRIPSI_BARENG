@@ -203,7 +203,7 @@ if (!empty($resultJadwalDokter)) {
                                                     <thead>
                                                         <th>Nama Klinik</th>
                                                         <th>Nama Dokter</th>
-                                                        <th>Jam Slot</th>
+                                                        <th width="40%" class="text-center">Jam Slot</th>
                                                     </thead>
 
                                                 <?php 
@@ -214,10 +214,14 @@ if (!empty($resultJadwalDokter)) {
                                                         <tr>
                                                             <td><?php echo $key1;?></td>
                                                             <td><?php echo $key2;?></td>
-                                                            <td>
-                                                                <?php foreach ($value2 as $key3 => $value3) {
-                                                                    echo json_encode($value3);
-                                                                }?>
+                                                            <td class="text-center">
+                                                                <?php
+                                                                    // echo json_encode($value2);
+                                                                    foreach ($value2['jam_mulai'] as $key3 => $value3) {
+                                                                        echo date('H:i', strtotime($value3))." - ".date('H:i', strtotime($value2['jam_selesai'][$key3]));
+                                                                        echo "<br>";
+                                                                    }
+                                                                ?>
                                                             </td>
                                                         </tr>
                                                     </tbody>

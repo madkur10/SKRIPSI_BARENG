@@ -68,6 +68,8 @@ if(empty($_SESSION)){
 				$return['metadata']['keterangan'] 	= 'Login Berhasil, Lanjutkan Ke Halaman Utama.';
 				if ($_SESSION['hak_akses']==2) {
 					$return['metadata']['redirect'] 	= 'pasien_daftar_pilih_poli.php';
+				}elseif($_SESSION['hak_akses']==4){
+					$return['metadata']['redirect'] 	= 'incoming_telekonsultasi.php';
 				}else{
 					$return['metadata']['redirect'] 	= 'index.php';
 				}

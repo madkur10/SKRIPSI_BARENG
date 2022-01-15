@@ -59,8 +59,9 @@ if(empty($_SESSION)){
 		}
 
 	}catch (PDOException $e) {
-		$return['metadata']['code'] 	= '201';;
-		$return['metadata']['message'] 	= $e->getMessage();;
+		$return['metadata']['code'] 		= '201';
+		$return['metadata']['message'] 		= 'Gagal';
+		$return['metadata']['keterangan'] 	= 'Pendaftaran Gagal, Mohon Periksa Lagi Pengisian Form';
 		echo json_encode($return);
 	}	
 }else{
